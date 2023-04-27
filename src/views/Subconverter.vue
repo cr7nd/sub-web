@@ -4,7 +4,7 @@
             <el-col>
                 <el-card>
                     <div slot="header">
-                        Subscription Converter
+                        订 阅 转 换
                         <div style="display: inline-block; position:absolute; right: 20px">{{ backendVersion }}</div>
                     </div>
                     <el-container>
@@ -173,7 +173,7 @@ export default {
                     ClashR: "clashr",
                     Surge2: "surge&ver=2",
                 },
-                backendOptions: [{value: "http://master.tqq.center:25500/sub?"}],
+                backendOptions: [{label: "TQQ自用后端", value: "https://subconverter.tqq.center:66/sub?"}],
                 remoteConfig: [
                     {
                         label: "通用",
