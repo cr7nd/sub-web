@@ -173,7 +173,7 @@ export default {
                     ClashR: "clashr",
                     Surge2: "surge&ver=2",
                 },
-                backendOptions: [{value: "https://subconverter.tqq.center:66/sub?"}],
+                backendOptions: [{value: "https://sc.tqq.center:66/sub?"}],
                 remoteConfig: [
                     {
                         label: "通用",
