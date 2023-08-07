@@ -217,7 +217,7 @@ export default {
                         options: [
                             {
                                 label: "TQQ_默认版",
-                                value: "https://raw.githubusercontent.com/cr7nd/res-use/master/res/custom/TQQ.ini"
+                                value: "https://raw.githubusercontent.com/cr7nd/res-use/master/res/custom/TQQ.ini?token=GHSAT0AAAAAACB4YJ4VWVSBDJPXRCBH37LCZGQ6XJQ"
                             }
                         ]
                     },
