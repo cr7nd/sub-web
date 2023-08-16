@@ -232,11 +232,15 @@ export default {
                         ]
                     },
                     {
-                        label: "TQQ",
+                        label: "FSS",
                         options: [
                             {
-                                label: "TQQ_默认版",
-                                value: "https://raw.githubusercontent.com/cr7nd/res-use/master/res/custom/TQQ.ini"
+                                label: "FSS_默认版",
+                                value: "https://raw.githubusercontent.com/cr7nd/res-use/master/res/custom/FSS.ini"
+                            },
+                            {
+                                label: "分享_默认版",
+                                value: "https://raw.githubusercontent.com/cr7nd/res-use/master/res/custom/ThirdParty.ini"
                             }
                         ]
                     },
