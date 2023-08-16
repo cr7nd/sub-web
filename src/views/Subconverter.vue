@@ -128,6 +128,17 @@
                                     </el-button>
                                 </el-input>
                             </el-form-item>
+                            <el-form-item label="订阅短链:">
+                              <el-input class="copy-content" disabled v-model="curtomShortSubUrl">
+                                <el-button
+                                  slot="append"
+                                  v-clipboard:copy="curtomShortSubUrl"
+                                  v-clipboard:success="onCopy"
+                                  ref="copy-btn"
+                                  icon="el-icon-document-copy"
+                                >复制</el-button>
+                              </el-input>
+                            </el-form-item>
                             <el-form-item label-width="0px" style="margin-top: 40px; text-align: center">
                                 <el-button
                                         style="width: 240px"
@@ -136,6 +147,13 @@
                                         :disabled="form.sourceSubUrl.length === 0"
                                 >生成订阅链接
                                 </el-button>
+                                <el-button
+                                        style="width: 120px"
+                                        type="danger"
+                                        @click="makeShortUrl"
+                                        :loading="loading"
+                                        :disabled="customSubUrl.length === 0"
+                                >生成短链接</el-button>
                             </el-form-item>
                         </el-form>
                     </el-container>
@@ -147,6 +165,7 @@
 
 <script>
 const defaultBackend = process.env.VUE_APP_SUBCONVERTER_DEFAULT_BACKEND + '/sub?'
+const shortUrlBackend = process.env.VUE_APP_MYURLS_DEFAULT_BACKEND + '/short'
 
 export default {
     data() {
@@ -812,6 +831,39 @@ export default {
 
             this.$copyText(this.customSubUrl);
             this.$message.success("定制订阅已复制到剪贴板");
+        },
+        makeShortUrl() {
+          if (this.customSubUrl === "") {
+            this.$message.warning("请先生成订阅链接，再获取对应短链接");
+            return false;
+          }
+
+          this.loading = true;
+
+          let data = new FormData();
+          data.append("longUrl", btoa(this.customSubUrl));
+
+          this.$axios
+            .post(shortUrlBackend, data, {
+              header: {
+                "Content-Type": "application/form-data; charset=utf-8"
+              }
+            })
+            .then(res => {
+              if (res.data.Code === 1 && res.data.ShortUrl !== "") {
+                this.curtomShortSubUrl = res.data.ShortUrl;
+                this.$copyText(res.data.ShortUrl);
+                this.$message.success("短链接已复制到剪贴板");
+              } else {
+                this.$message.error("短链接获取失败：" + res.data.Message);
+              }
+            })
+            .catch(() => {
+              this.$message.error("短链接获取失败");
+            })
+            .finally(() => {
+              this.loading = false;
+            });
         },
         backendSearch(queryString, cb) {
             let backends = this.options.backendOptions;
