@@ -236,11 +236,11 @@ export default {
                         options: [
                             {
                                 label: "FSS_默认版",
-                                value: "https://raw.githubusercontent.com/cr7nd/res-use/master/res/custom/FSS.ini"
+                                value: "https://git.tqq.center:66/FSS/res-use/raw/branch/main/res/custom/FSS.ini"
                             },
                             {
                                 label: "分享_默认版",
-                                value: "https://raw.githubusercontent.com/cr7nd/res-use/master/res/custom/ThirdParty.ini"
+                                value: "https://git.tqq.center:66/FSS/res-use/raw/branch/main/res/custom/ThirdParty.ini"
                             }
                         ]
                     },
